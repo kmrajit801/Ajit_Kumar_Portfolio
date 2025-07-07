@@ -6,317 +6,205 @@
   <title>Ajit Kumar | Portfolio</title>
   <style>
     :root {
-      --bg-light: #fefefe;
-      --bg-dark: #2e2e2e;
       --primary: #00796b;
-      --secondary: #cfd8dc;
-      --text-dark: #2e2e2e;
-      --text-light: #f4f4f4;
-      --text-normal: #333333;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      --background: #f5f5f5;
+      --foreground: #ffffff;
+      --text-dark: #1a1a1a;
+      --accent: #004d40;
     }
 
     body {
+      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: var(--bg-light);
-      color: var(--text-normal);
-      line-height: 1.6;
-      scroll-behavior: smooth;
+      background-color: var(--background);
+      color: var(--text-dark);
+      display: flex;
     }
 
-    header {
-      background: linear-gradient(135deg, var(--primary), var(--bg-dark));
-      color: var(--text-light);
-      text-align: center;
-      padding: 3rem 1rem;
-      animation: fadeInDown 1s ease;
-    }
-
-    header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.5rem;
-    }
-
-    header p {
-      font-size: 1.3rem;
-      font-style: italic;
-    }
-
-    nav {
-      background-color: var(--secondary);
-      padding: 1rem;
-      text-align: center;
-      position: sticky;
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
       top: 0;
+      left: 0;
+      width: 240px;
+      height: 100%;
+      background-color: var(--primary);
+      padding-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       z-index: 100;
     }
 
-    nav a {
-      color: var(--text-dark);
-      margin: 0 15px;
+    .sidebar h2 {
+      color: #fff;
+      margin-bottom: 2rem;
+    }
+
+    .sidebar a {
+      color: #fff;
       text-decoration: none;
-      font-weight: bold;
-      padding: 0.3rem 0.5rem;
-      border-radius: 5px;
+      padding: 0.8rem 1rem;
+      display: block;
+      width: 100%;
+      text-align: center;
       transition: background 0.3s;
     }
 
-    nav a.active,
-    nav a:hover {
-      background-color: var(--primary);
-      color: var(--text-light);
+    .sidebar a:hover,
+    .sidebar a.active {
+      background-color: var(--accent);
     }
 
-    main {
-      max-width: 900px;
-      margin: auto;
+    /* Main Content */
+    .main-content {
+      margin-left: 240px;
       padding: 2rem;
-      animation: fadeIn 1.5s ease;
+      flex: 1;
     }
 
     section {
-      margin-bottom: 2.5rem;
-      padding: 1rem;
-      background: white;
-      border-left: 5px solid var(--primary);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      background-color: var(--foreground);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
       border-radius: 8px;
-      transition: transform 0.3s;
-      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
     }
 
     section:hover {
       transform: scale(1.01);
     }
 
-    h2 {
+    h1, h2 {
       color: var(--primary);
-      margin-bottom: 0.8rem;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 0.3rem;
-    }
-
-    h3 {
-      color: var(--bg-dark);
-      margin-top: 1.5rem;
     }
 
     ul {
       padding-left: 20px;
-      list-style-type: square;
     }
 
     a {
       color: var(--primary);
-      text-decoration: none;
     }
 
-    a:hover {
-      text-decoration: underline;
-    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0;
+      }
 
-    .contact p {
-      margin: 5px 0;
-    }
+      .sidebar h2 {
+        display: none;
+      }
 
-    footer {
-      background-color: var(--bg-dark);
-      color: var(--text-light);
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-    }
+      .sidebar a {
+        flex: 1;
+        padding: 1rem 0.5rem;
+        font-size: 0.9rem;
+      }
 
-    .section-content {
-      display: none;
-      padding-top: 1rem;
-    }
-
-    .show {
-      display: block !important;
-    }
-
-    #topBtn {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      padding: 10px 15px;
-      font-size: 16px;
-      background-color: var(--bg-dark);
-      color: var(--text-light);
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      display: none;
-      z-index: 999;
-    }
-
-    #topBtn:hover {
-      background-color: var(--primary);
-    }
-
-    /* Animations */
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      .main-content {
+        margin-left: 0;
+        padding: 1rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Ajit Kumar</h1>
-    <p>Assistant Manager | AI/ML in Embedded Systems | EdTech Innovator</p>
-  </header>
-
-  <nav>
-    <a href="#contact">Contact</a>
+  <nav class="sidebar">
+    <h2>Ajit Kumar</h2>
     <a href="#summary">Summary</a>
     <a href="#skills">Skills</a>
     <a href="#experience">Experience</a>
     <a href="#projects">Projects</a>
     <a href="#education">Education</a>
-    <a href="#certs">Certifications</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#contact">Contact</a>
   </nav>
 
-  <main>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <div class="section-content">
-        <p><strong>Email:</strong> <a href="mailto:ajitkmr.ece@gmail.com">ajitkmr.ece@gmail.com</a></p>
-        <p><strong>Phone:</strong> +91 8639870416</p>
-        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ajitkmr801" target="_blank">ajitkmr801</a></p>
-        <p><strong>Location:</strong> Bangalore, India</p>
-      </div>
-    </section>
+  <div class="main-content">
 
     <section id="summary">
       <h2>Profile Summary</h2>
-      <div class="section-content">
-        <p>13+ years of experience in Electronics & Embedded Systems with a focus on AI/ML. Certified by IIT Madras and IBM. Proven track record in developing smart classroom solutions, analytics tools, and IoT systems in the education sector.</p>
-      </div>
+      <p>13+ years of experience in Electronics & Embedded Systems with a focus on AI/ML. Certified by IIT Madras and IBM. Proven track record in developing smart classroom solutions, analytics tools, and IoT systems in the education sector.</p>
     </section>
 
     <section id="skills">
       <h2>Core Competencies</h2>
-      <div class="section-content">
-        <ul>
-          <li>Project & Product Management</li>
-          <li>AI/ML Development (Python, Scikit-learn)</li>
-          <li>Embedded Systems (ARM, PIC, IoT)</li>
-          <li>Data Analytics (Power BI, Tableau)</li>
-          <li>System Design & Circuit Testing</li>
-          <li>Technical Consultancy & Team Leadership</li>
-        </ul>
-      </div>
+      <ul>
+        <li>Project & Product Management</li>
+        <li>AI/ML Development (Python, Scikit-learn)</li>
+        <li>Embedded Systems (ARM, PIC, IoT)</li>
+        <li>Data Analytics (Power BI, Tableau)</li>
+        <li>System Design & Circuit Testing</li>
+        <li>Technical Consultancy & Team Leadership</li>
+      </ul>
     </section>
 
     <section id="experience">
       <h2>Professional Experience</h2>
-      <div class="section-content">
-        <h3>Assistant Manager – Design & Development | Edutech NTTF (2014–Present)</h3>
-        <ul>
-          <li>Led AI-integrated Smart Classroom development</li>
-          <li>Created ML models to assess student performance and engagement</li>
-          <li>Built IoT systems for safety and energy monitoring</li>
-          <li>Deployed micro-ML models on edge devices (TinyML)</li>
-        </ul>
-
-        <h3>Validation Engineer | LG Soft India (2011–2014)</h3>
-        <ul>
-          <li>Designed and tested embedded system prototypes</li>
-          <li>Provided technical consultancy and developed training modules</li>
-        </ul>
-      </div>
+      <h3>Assistant Manager – Design & Development | Edutech NTTF (2014–Present)</h3>
+      <ul>
+        <li>Led AI-integrated Smart Classroom development</li>
+        <li>Created ML models to assess student performance and engagement</li>
+        <li>Built IoT systems for safety and energy monitoring</li>
+        <li>Deployed micro-ML models on edge devices (TinyML)</li>
+      </ul>
+      <h3>Validation Engineer | LG Soft India (2011–2014)</h3>
+      <ul>
+        <li>Designed and tested embedded system prototypes</li>
+        <li>Provided technical consultancy and developed training modules</li>
+      </ul>
     </section>
 
     <section id="projects">
       <h2>Projects</h2>
-      <div class="section-content">
-        <ul>
-          <li><strong>Resume Screening Bot:</strong> NLP + TF-IDF ranking tool for resume filtering</li>
-          <li><strong>Student Performance Predictor:</strong> Achieved 96% accuracy using ML</li>
-          <li><strong>IoT Smart Health Monitor:</strong> Real-time sensor alert system</li>
-          <li><strong>AI PCB Defect Detection:</strong> CNN-based model for fault classification</li>
-        </ul>
-      </div>
+      <ul>
+        <li><strong>Resume Screening Bot:</strong> NLP + TF-IDF ranking tool for resume filtering</li>
+        <li><strong>Student Performance Predictor:</strong> Achieved 96% accuracy using ML</li>
+        <li><strong>IoT Smart Health Monitor:</strong> Real-time sensor alert system</li>
+        <li><strong>AI PCB Defect Detection:</strong> CNN-based model for fault classification</li>
+      </ul>
     </section>
 
     <section id="education">
       <h2>Education</h2>
-      <div class="section-content">
-        <ul>
-          <li>B.E. in ECE – Dr. APJ Abdul Kalam University, Indore</li>
-          <li>Diploma in Electronics – NTTF, Bangalore</li>
-          <li>ICSE – Jamshedpur</li>
-        </ul>
-      </div>
+      <ul>
+        <li>B.E. in ECE – Dr. APJ Abdul Kalam University, Indore</li>
+        <li>Diploma in Electronics – NTTF, Bangalore</li>
+        <li>ICSE – Jamshedpur</li>
+      </ul>
     </section>
 
-    <section id="certs">
+    <section id="certifications">
       <h2>Certifications</h2>
-      <div class="section-content">
-        <ul>
-          <li>AI/ML – IIT Madras</li>
-          <li>Data Analytics – IBM</li>
-          <li>Employability Skills – Wadhwani Foundation</li>
-        </ul>
-      </div>
+      <ul>
+        <li>AI/ML – IIT Madras</li>
+        <li>Data Analytics – IBM</li>
+        <li>Employability Skills – Wadhwani Foundation</li>
+      </ul>
     </section>
 
-  </main>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p><strong>Email:</strong> <a href="mailto:ajitkmr.ece@gmail.com">ajitkmr.ece@gmail.com</a></p>
+      <p><strong>Phone:</strong> +91 8639870416</p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ajitkmr801" target="_blank">linkedin.com/in/ajitkmr801</a></p>
+      <p><strong>Location:</strong> Bangalore, India</p>
+    </section>
 
-  <button id="topBtn">↑ Top</button>
+    <footer style="text-align: center; padding: 1rem; color: #666;">
+      &copy; 2025 Ajit Kumar. All rights reserved.
+    </footer>
 
-  <footer>
-    &copy; 2025 Ajit Kumar. All rights reserved.
-  </footer>
-
-  <script>
-    // Section Toggle
-    document.querySelectorAll("section").forEach(sec => {
-      sec.addEventListener("click", () => {
-        const content = sec.querySelector(".section-content");
-        document.querySelectorAll(".section-content").forEach(sc => {
-          if (sc !== content) sc.classList.remove("show");
-        });
-        content.classList.toggle("show");
-      });
-    });
-
-    // Highlight Active Nav Link
-    const navLinks = document.querySelectorAll("nav a");
-    window.addEventListener("scroll", () => {
-      let fromTop = window.scrollY + 80;
-      navLinks.forEach(link => {
-        let section = document.querySelector(link.getAttribute("href"));
-        if (section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
-          navLinks.forEach(l => l.classList.remove("active"));
-          link.classList.add("active");
-        }
-      });
-    });
-
-    // Scroll to Top Button
-    const topBtn = document.getElementById("topBtn");
-    window.onscroll = function () {
-      topBtn.style.display = (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) ? "block" : "none";
-    };
-    topBtn.onclick = function () {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-  </script>
+  </div>
 
 </body>
 </html>

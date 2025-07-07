@@ -6,11 +6,13 @@
   <title>Ajit Kumar | Portfolio</title>
   <style>
     :root {
-      --coffee-bg: #f3f0e7;
-      --coffee-primary: #6f4e37;
-      --coffee-secondary: #b38867;
-      --coffee-accent: #d9cab3;
-      --coffee-text: #3e2f24;
+      --bg-light: #fefefe;
+      --bg-dark: #2e2e2e;
+      --primary: #00796b;
+      --secondary: #cfd8dc;
+      --text-dark: #2e2e2e;
+      --text-light: #f4f4f4;
+      --text-normal: #333333;
     }
 
     * {
@@ -21,15 +23,15 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: var(--coffee-bg);
-      color: var(--coffee-text);
+      background-color: var(--bg-light);
+      color: var(--text-normal);
       line-height: 1.6;
       scroll-behavior: smooth;
     }
 
     header {
-      background: linear-gradient(135deg, var(--coffee-primary), var(--coffee-secondary));
-      color: white;
+      background: linear-gradient(135deg, var(--primary), var(--bg-dark));
+      color: var(--text-light);
       text-align: center;
       padding: 3rem 1rem;
       animation: fadeInDown 1s ease;
@@ -46,7 +48,7 @@
     }
 
     nav {
-      background-color: var(--coffee-accent);
+      background-color: var(--secondary);
       padding: 1rem;
       text-align: center;
       position: sticky;
@@ -55,7 +57,7 @@
     }
 
     nav a {
-      color: var(--coffee-text);
+      color: var(--text-dark);
       margin: 0 15px;
       text-decoration: none;
       font-weight: bold;
@@ -66,8 +68,8 @@
 
     nav a.active,
     nav a:hover {
-      background-color: var(--coffee-secondary);
-      color: white;
+      background-color: var(--primary);
+      color: var(--text-light);
     }
 
     main {
@@ -81,7 +83,7 @@
       margin-bottom: 2.5rem;
       padding: 1rem;
       background: white;
-      border-left: 5px solid var(--coffee-secondary);
+      border-left: 5px solid var(--primary);
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       border-radius: 8px;
       transition: transform 0.3s;
@@ -93,14 +95,14 @@
     }
 
     h2 {
-      color: var(--coffee-primary);
+      color: var(--primary);
       margin-bottom: 0.8rem;
       border-bottom: 1px solid #ddd;
       padding-bottom: 0.3rem;
     }
 
     h3 {
-      color: var(--coffee-secondary);
+      color: var(--bg-dark);
       margin-top: 1.5rem;
     }
 
@@ -110,7 +112,7 @@
     }
 
     a {
-      color: var(--coffee-primary);
+      color: var(--primary);
       text-decoration: none;
     }
 
@@ -123,11 +125,11 @@
     }
 
     footer {
-      background-color: var(--coffee-accent);
+      background-color: var(--bg-dark);
+      color: var(--text-light);
       text-align: center;
       padding: 1rem;
       font-size: 0.9rem;
-      color: #5c4435;
     }
 
     .section-content {
@@ -145,8 +147,8 @@
       right: 25px;
       padding: 10px 15px;
       font-size: 16px;
-      background-color: var(--coffee-primary);
-      color: white;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -155,7 +157,7 @@
     }
 
     #topBtn:hover {
-      background-color: var(--coffee-secondary);
+      background-color: var(--primary);
     }
 
     /* Animations */
